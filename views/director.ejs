@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Table</title>
+</head>
+<body>
+    <h1>Welcome Director</h1>
+    <form action="/users/director" method="post">
+        <label for="store_code">Choose store</label>
+        <select name="store_code">
+            <option value="S01" <%= id  == "S02" ? 'selected' : ''%> >S01</option>
+            <option value="S02" <%= id  == "S02" ? 'selected' : ''%> >S02</option>
+            <option value="S03" <%= id  == "S03" ? 'selected' : ''%> >S03</option>
+            <option value="S04" <%= id  == "S04" ? 'selected' : ''%> >S04</option>
+        </select>
+        <button type="submit" name="btn" value="send">Select</button>
+    </form>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Store Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(function(product){%>
+                <tr>
+                    <td><%= product.product_name %></td>
+                    <td><%= product.price %></td>
+                    <td><%= product.quantity %></td>
+                    <td><%= product.store_name %></td>
+                    <td><%= product.store_address %></td>
+                    <td><%= product.store_phone %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <a href="/users/logout"> Logout </a>
+    <script>
+        setTimeout(function() {
+        location.reload();
+        }, 5000);
+      </script>
+</body>
+</html>
